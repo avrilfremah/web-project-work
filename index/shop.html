@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Petal Palour | Shop</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #920b4f;
+        }
+
+        
+        nav {
+            background-color: #a81150;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+
+        nav a:hover {
+            background-color: #52093f;
+            border-radius: 4px;
+        }
+
+        
+        .shop-header {
+            background-color: #d64593;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .shop-header h1 {
+            font-size: 40px;
+            color: #4e073e;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            justify-items: center;
+        }
+
+        .product {
+            background-color: white;
+            width: 250px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product h3 {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #470749;
+        }
+
+        .product p {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .product button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #0f010d;
+            color: rgb(114, 19, 106);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            background-color: #f1eff1;
+        }
+
+        .cart {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #7c0f6a;
+            color: rgb(241, 131, 232);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .cart p {
+            margin: 0;
+        }
+
+        footer {
+            background-color: #790e73;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div>
+            <a href="home.html">The Petal Palour</a>
+        </div>
+        <div>
+            <a href="shop.html">Shop</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <section class="shop-header">
+        <h1>Shop Our Fresh And Beatiful Flowers</h1>
+        <p><b>Browse through our wide selection of fresh flowers for every occasion. Make your selections and place your order. <br>If you don not find what you are looking for on our site, you can contact us so we make your special orders for you</br></b></p>
+    </section>
+
+    <section class="products">
+        <div class="product">
+            <img src="rose bouquet.jpeg" alt="Rose Bouquet">
+            <h3>Rose Bouquet</h3>
+            <p>GHC 500</p>
+            <button onclick="addToCart('Rose Bouquet', 500)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="lily vase.jpeg" alt="Lily Vase">
+            <h3>Lily Vase</h3>
+            <p>GHC 300</p>
+            <button onclick="addToCart('Lily Vase', 300)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="tulip basket.jpeg" alt="Tulip Basket">
+            <h3>Tulip Basket</h3>
+            <p>GHC 700</p>
+            <button onclick="addToCart('Tulip Basket', 700)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="vase of jasmin flowers.jpeg" alt="Vase of Jasmin Flowers">
+            <h4>Jasmin Flowers</h4>
+            <p>GHC 250</p>
+            <button onclick="addToCart('Jasmin Flowers', 250)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="bouquet of lavender.jpeg" alt="Bouquet of Lavender">
+            <h5>Lavender Bouquet</h5>
+            <p>GHC 200</p>
+            <button onclick="addToCart('Lavender Bouquet', 200)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="basket of sunflower.jpeg" alt="Basket of Sunflower">
+            <h6>Basket of Sunflower</h6>
+            <p>GHC 2500</p>
+            <button onclick="addToCart('Basket of Sunflower', 2500)">Add to Cart</button>
+        </div>
+    </section>
+
+    <div class="cart" id="cart">
+        <p>Cart: <span id="cart-count">0</span> items</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 The Petal Palour | All rights reserved.</p>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count');
+            cartCount.textContent = cart.length;
+        }
+
+        document.getElementById('cart').addEventListener('click', () => {
+            alert('Cart: ' + cart.length + ' items');
+        });
+    </script>
+
+</body>
+
+</html>

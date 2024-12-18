@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Gallery</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f187da;
+        }
+        header {
+            background-color: #0c010c;
+            color: rgb(185, 67, 201);
+            text-align: center;
+            padding: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        header nav {
+            margin-top: 10px;
+        }
+
+        header nav a {
+            color: rgb(240, 234, 234);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+    
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .product {
+            text-align: center;
+            width: 200px;
+        }
+        .product img {
+            width: 80%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Product Gallery</h1>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="#">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+    </nav>
+</header>
+  
+
+    <div id="product-container" class="product-container"></div>
+
+    <script>
+        const products = [
+            { name: 'Rose Bouquet', price: 'GHC 500', description: 'A beautiful bouquet of fresh roses.', image: "rose Bouquet.jpeg" },
+            { name: 'Lily Vase', price: 'GHC 300', description: 'Elegant lilies in a decorative vase.', image: 'lily vase.jpeg' },
+            { name: 'Tulip Basket', price: 'GHC 700', description: 'Vibrant tulips arranged in a basket.', image: 'tulip basket.jpeg' },
+            { name: 'Jasmin Flowers', price: 'GHC 250', description: 'A vase of fresh jasmines.', image: 'vase of jasmin flowers.jpeg' },
+            { name: 'Lavender Bouquet', price: 'GHC 200', description: 'A beautiful bouquet of fresh lavender.', image: 'bouquet of lavender.jpeg' },
+            { name: 'Basket of Sunflower', price: 'GHC 2500', description: 'A beautiful basket of fresh sunnies.', image: 'basket of sunflower.jpeg'}
+        ];
+
+        const productContainer = document.getElementById('product-container');
+        products.forEach(product => {
+            console.log('Loading image from: ', product.image);
+
+            const productElement = document.createElement('div');
+            productElement.classList.add('product');
+
+            const img = document.createElement('img');
+            img.src = product.image;
+            img.alt = product.name;
+
+            const name = document.createElement('h3');
+            name.textContent = product.name;
+
+            const price = document.createElement('p');
+            price.textContent = product.price;
+
+            const description = document.createElement('p');
+            description.textContent = product.description;
+
+            productElement.appendChild(img);
+            productElement.appendChild(name);
+            productElement.appendChild(price);
+            productElement.appendChild(description);
+
+            productContainer.appendChild(productElement);
+        });
+    </script>
+
+</body> 
+</html>
+
